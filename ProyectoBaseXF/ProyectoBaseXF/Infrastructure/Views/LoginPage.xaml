@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             xmlns:converters="clr-namespace:ProyectoBaseXF.Infrastructure.Extensions"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="ProyectoBaseXF.Infrastructure.Views.LoginPage"
+             NavigationPage.HasNavigationBar="False"
+             Visual="Material">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:InverseBooleanConverter x:Key="Not" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ScrollView>
+        <StackLayout Padding="15">
+            <FlexLayout JustifyContent="SpaceAround"
+                        AlignItems="Stretch"
+                        Direction="Column"
+                        VerticalOptions="FillAndExpand">
+                <StackLayout >
+                    <Image Source="icon"
+                           HorizontalOptions="Center" />
+                    <Label Text="Proyecto Base"
+                           HorizontalOptions="Center"
+                           FontSize="48" />
+                </StackLayout>
+                <StackLayout HorizontalOptions="{OnIdiom Phone=FillAndExpand, Tablet=Center}"
+                             Spacing="15"
+                             Padding="25">
+                    <Entry x:Name="Username"
+                           Text="{Binding Username}"
+                           Placeholder="Usuario"
+                           BackgroundColor="White"
+                           ReturnType="Next" />
+                    <Entry x:Name="Password"
+                           Text="{Binding Password}"
+                           IsPassword="True"
+                           Placeholder="Contraseña"
+                           BackgroundColor="White"
+                           ReturnType="Default" />
+                    <Button Text="Iniciar Sesión"
+                            IsEnabled="{Binding IsBusy, Converter={StaticResource Not}}"
+                            Command="{Binding LoginCommand}"  />
+                </StackLayout>
+            </FlexLayout>
+            <Label Text="{Binding Version}"
+                   FontAttributes="Bold"
+                   HorizontalOptions="End" />
+        </StackLayout>
+    </ScrollView>
+</ContentPage>
