@@ -1,0 +1,3 @@
+﻿Agregar migracion:
+
+Add-Migration NombreMigracion -StartupProject DbConfig -Project ProyectoBaseXF
