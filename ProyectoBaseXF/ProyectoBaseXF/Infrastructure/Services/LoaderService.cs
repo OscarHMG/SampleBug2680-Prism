@@ -26,7 +26,20 @@ namespace ProyectoBaseXF.Infrastructure.Services
         }
         public async Task HideAndNavigate(string location)
         {
-            await NavigationService.NavigateAsync($"../{location}");
+            INavigationResult result;
+            if (location.StartsWith("/"))
+            {
+                await this.Hide();
+                result = await NavigationService.NavigateAsync($"{location}");
+            }
+            else
+            {
+                result = await NavigationService.NavigateAsync($"../{location}");
+            }
+            if (!result.Success)
+            {
+                Console.WriteLine(result.Exception.Message);
+            }
         }
     }
 }

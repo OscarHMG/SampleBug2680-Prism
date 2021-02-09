@@ -26,7 +26,7 @@ namespace ProyectoBaseXF.Infrastructure.ViewModels
 
             LoginCommand = new Command(async () =>
             {
-                await LoadTaskAsync(userService.HandleLogin(Username, Password), "Iniciando Sesión");
+                await LoadTaskAsync(userService.HandleLogin(Username, Password), "Iniciando Sesión", "/NavigationPage/DemoPage");
             });
         }
     }
