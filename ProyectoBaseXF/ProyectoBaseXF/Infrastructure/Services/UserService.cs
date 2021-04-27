@@ -36,7 +36,6 @@ namespace ProyectoBaseXF.Infrastructure.Services
         {
             var respuesta = await Api.GetToken(Username.Trim(), Password.Trim());
             await StoreToken(Username.Trim(), respuesta.AccessToken, respuesta.Expires);
-            await HandleOnResume();
         }
 
         public async Task<bool> HasValidToken()
