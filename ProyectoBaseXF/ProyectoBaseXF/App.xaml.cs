@@ -25,7 +25,6 @@ namespace ProyectoBaseXF
         protected override async void OnInitialized()
         {
             InitializeComponent();
-
             await HandleLifeCycle();
         }
 
