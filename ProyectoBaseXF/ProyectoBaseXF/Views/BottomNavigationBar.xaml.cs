@@ -10,9 +10,9 @@ using Xamarin.Forms.Xaml;
 namespace ProyectoBaseXF.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class DemoPage : ContentPage
+    public partial class BottomNavigationBar : TabbedPage
     {
-        public DemoPage()
+        public BottomNavigationBar()
         {
             InitializeComponent();
         }

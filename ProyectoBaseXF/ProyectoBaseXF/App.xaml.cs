@@ -8,6 +8,7 @@ using ProyectoBaseXF.Infrastructure.Views;
 using ProyectoBaseXF.Service;
 using ProyectoBaseXF.ViewModels;
 using ProyectoBaseXF.Views;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using Xamarin.Essentials.Implementation;
 using Xamarin.Essentials.Interfaces;
@@ -25,7 +26,14 @@ namespace ProyectoBaseXF
         protected override async void OnInitialized()
         {
             InitializeComponent();
-            await HandleLifeCycle();
+            INavigationResult Result = null;
+
+            Result = await NavigationService.NavigateAsync("/MainPage/Nav/BottomNavigationBar?selectedTab=TAB1");
+            if (!Result.Success)
+            {
+                Debugger.Break();
+            }
+
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
@@ -39,12 +47,18 @@ namespace ProyectoBaseXF
             containerRegistry.RegisterSingleton<LoaderService>();
 
             //Pages
-            containerRegistry.RegisterForNavigation<NavigationPage>();
-            containerRegistry.RegisterForNavigation<DemoPage, DemoPageViewModel>();
+            
             containerRegistry.RegisterForNavigation<LoaderPopup, LoaderPopupViewModel>();
-            containerRegistry.RegisterForNavigation<DemoPage2, DemoPage2ViewModel>();
             containerRegistry.RegisterForNavigation<LoginPage, LoginPageViewModel>();
 
+            //Example
+            containerRegistry.RegisterForNavigation<MainPage, MainPageViewModel>("MainPage");
+            containerRegistry.RegisterForNavigation<NavigationPage>("Nav");
+            containerRegistry.RegisterForNavigation<BottomNavigationBar>("BottomNavigationBar");
+            containerRegistry.RegisterForNavigation<TAB1, TAB1PageViewModel>("TAB1");
+            containerRegistry.RegisterForNavigation<TAB2, TAB2PageViewModel>("TAB2");
+            containerRegistry.RegisterForNavigation<TAB3, TAB3PageViewModel>("TAB3");
+            containerRegistry.RegisterForNavigation<DemoPage, DemoPageViewModel>("DemoPage");
         }
 
 

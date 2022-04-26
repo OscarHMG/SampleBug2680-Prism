@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="ProyectoBaseXF.Views.MainPage"
+             xmlns:pages="clr-namespace:ProyectoBaseXF.Views">
+  <MasterDetailPage.Master>
+        <ContentPage Title="Menu">
+            <TableView HasUnevenRows="True" >
+                <TableRoot>
+                    <TableSection>
+                        <ViewCell >
+                            <StackLayout Padding="15, 10">
+                                <Label Text="Inicio" FontSize="18"/>
+                            </StackLayout>
+                        </ViewCell>
+                        <ViewCell>
+                            <StackLayout Padding="15, 10">
+                                <Label Text="Cambio de Contraseña" FontSize="18"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </TableSection>
+                </TableRoot>
+            </TableView>
+        </ContentPage>
+    </MasterDetailPage.Master>
+  
+</MasterDetailPage>

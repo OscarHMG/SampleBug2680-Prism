@@ -10,9 +10,9 @@ using Xamarin.Forms.Xaml;
 namespace ProyectoBaseXF.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class DemoPage : ContentPage
+    public partial class TAB2 : ContentPage
     {
-        public DemoPage()
+        public TAB2()
         {
             InitializeComponent();
         }

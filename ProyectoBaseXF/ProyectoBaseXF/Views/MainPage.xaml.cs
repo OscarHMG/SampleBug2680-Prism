@@ -10,11 +10,12 @@ using Xamarin.Forms.Xaml;
 namespace ProyectoBaseXF.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class DemoPage : ContentPage
+    public partial class MainPage : MasterDetailPage
     {
-        public DemoPage()
+        public MainPage()
         {
             InitializeComponent();
         }
+
     }
 }

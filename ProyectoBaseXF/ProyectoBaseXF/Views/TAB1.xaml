@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             xmlns:vm="clr-namespace:ProyectoBaseXF.ViewModels"
+             mc:Ignorable="d"
+             x:Class="ProyectoBaseXF.Views.TAB1">
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="FillAndExpand" Orientation="Vertical" Spacing="0">
+            <Grid RowDefinitions="55*,45*" VerticalOptions="FillAndExpand" Margin="0">
+                <Grid Grid.Row="0" VerticalOptions="FillAndExpand" Margin="0,0,0,0">
+                    <Label Text="MAP GOES HERE" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontSize="25" TextColor="Black"/>
+                </Grid>
+
+                <yummy:PancakeView
+                    VerticalOptions="FillAndExpand"
+                    TranslationY="-10"
+                    Margin="0,0,0, -10"
+                    Grid.Row="1"
+                    BackgroundColor="White"
+                    CornerRadius="20, 20 , 0, 0">
+                    <yummy:PancakeView.Border>
+                        <yummy:Border Thickness="2" Color="White"  />
+                    </yummy:PancakeView.Border>
+                    <yummy:PancakeView.Shadow>
+                        <yummy:DropShadow BlurRadius="55"></yummy:DropShadow>
+                    </yummy:PancakeView.Shadow>
+
+                    <StackLayout Padding="25, 15, 25, 5" VerticalOptions="FillAndExpand">
+                        <CollectionView ItemsSource="{Binding ListItems}" SelectionMode="None" InputTransparent="False">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid
+                                        Padding="0, 5"
+                                        Margin="0, 1"
+                                        ColumnSpacing="10"
+                                        VerticalOptions="Center"
+                                        ColumnDefinitions="10*, 75*, 15*"
+                                        RowDefinitions="*">
+                                        <Label Text="*"  Grid.Column="0" VerticalOptions="CenterAndExpand" FontSize="28" TextColor="#ffd700"/>
+
+                                        <StackLayout Grid.Column="1" Spacing="0">
+                                            <Label Text="{Binding Name}" FontAttributes="Bold" TextColor="Black"  FontSize="18" LineBreakMode="TailTruncation" MaxLines="1"></Label>
+                                            <Label Text="{Binding ID}" TextColor="#696969" FontSize="16" LineBreakMode="TailTruncation" MaxLines="1"></Label>
+                                            <StackLayout.GestureRecognizers>
+                                                <TapGestureRecognizer
+                                                    Command="{Binding Source={RelativeSource AncestorType={x:Type vm:TAB1PageViewModel}}, Path=ItemSelectedCommand}"
+                                                    NumberOfTapsRequired="1"
+                                                    CommandParameter="{Binding .}" />
+                                            </StackLayout.GestureRecognizers>
+                                        </StackLayout>
+
+                                        <yummy:PancakeView Grid.Column="2" BackgroundColor="Red" CornerRadius="25"  Grid.Row="0"  HorizontalOptions="End" VerticalOptions="CenterAndExpand" Padding="3">
+                                            <Label Text="X" FontFamily="FA" TextColor="White" VerticalOptions="Fill" HorizontalOptions="Start" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" WidthRequest="25" HeightRequest="25" FontSize="20"/>
+                                            <yummy:PancakeView.GestureRecognizers>
+                                                <TapGestureRecognizer
+                                                    NumberOfTapsRequired="1"
+                                                    CommandParameter="{Binding .}"
+                                                    Command="{Binding Source={RelativeSource AncestorType={x:Type vm:TAB1PageViewModel}}, Path=DeleteItemCommand}"/>
+                                            </yummy:PancakeView.GestureRecognizers>
+                                        </yummy:PancakeView>
+                                    </Grid>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </StackLayout>
+                </yummy:PancakeView>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

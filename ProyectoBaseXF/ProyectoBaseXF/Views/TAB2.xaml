@@ -4,16 +4,12 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             Title="DEMO PAGE"
-             x:Class="ProyectoBaseXF.Views.DemoPage">
+             x:Class="ProyectoBaseXF.Views.TAB2">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="DEMO PAGE"
-                   FontSize="28"
-                   TextColor="Black"
+            <Label Text="TAB2"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
-            <Button Text="RESET NAVIGATION" Command="{Binding ResetNavigationCommand}"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
